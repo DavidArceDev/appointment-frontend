@@ -1,0 +1,270 @@
+/* ========== 🎨 PALETA GLOBAL ========== */
+:root {
+  --color-bg: #f4f6f8;          /* fondo general suave */
+  --color-text: #2d3748;        /* gris oscuro */
+  --color-primary: #14c747;     /* verde agua */
+  --color-primary-dark: #36a68d;
+  --color-accent: #133e67;      /* azul profesional */
+  --color-border: #d9e2e8;
+  --color-muted: #f2f7f8;       /* gris azulado claro */
+  
+  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== 🌿 ESTILOS GLOBALES ========== */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+}
+
+h1, h2, h3 {
+  color: var(--color-accent);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Botones generales */
+button {
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  background-color: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.25s, transform 0.15s;
+}
+
+button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Enlaces */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* Tarjetas o paneles (útil si agregas formularios) */
+.card, .panel {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* ========== 🩺 MODAL ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.25s ease forwards;
+}
+
+.modal-box {
+  position: relative;
+  background: #f7f9fa;
+  border: 1px solid #cddce0;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  min-width: 340px;
+  max-width: 90%;
+  color: #333;
+  animation: popIn 0.25s ease forwards;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal-box h3 {
+  text-align: center;
+  margin-top: 0;
+  color: #0d3b66;
+  font-weight: 600;
+}
+
+.modal-box p {
+  text-align: center;
+  color: #333;
+}
+
+/* Botones dentro del modal */
+.modal-box button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.modal-box button:first-of-type {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.modal-box button:first-of-type:hover {
+  background-color: #d6d6d6;
+}
+
+.modal-box button:last-of-type {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.modal-box button:last-of-type:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Animaciones del modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ========== 🗓️ CALENDARIO (modo claro) ========== */
+
+/* Fondo general claro */
+.fc,
+.fc-scrollgrid,
+.fc-view-harness,
+.fc-view-harness-active,
+.fc-timegrid,
+.fc-timegrid-body,
+.fc-scrollgrid-sync-table {
+  background-color: #f9fbfc !important;
+  color: var(--color-text) !important;
+}
+
+/* Cabecera de días */
+.fc-col-header-cell {
+  background-color: var(--color-muted) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-accent) !important;
+  font-weight: 600;
+}
+
+/* Eje izquierdo de horas */
+.fc-timegrid-axis-frame {
+  background-color: var(--color-muted) !important;
+  color: var(--color-text) !important;
+  font-weight: 500;
+}
+
+/* Líneas divisorias */
+.fc-theme-standard td,
+.fc-theme-standard th {
+  border-color: var(--color-border) !important;
+}
+
+/* Fondo de las celdas de tiempo */
+.fc-timegrid-slot {
+  background-color: #ffffff !important;
+}
+
+/* Eventos “no disponibles” (bloques grises) */
+.fc-bg-event {
+  background-color: #dfe3e6 !important;
+}
+
+/* Eventos “disponibles” (bloques verdes suaves) */
+.fc-bg-event.available {
+  background-color: #eaf7f4 !important;
+}
+
+/* Evento confirmado (para uso interno o vista profesional) */
+.fc-event {
+  background-color: var(--color-primary) !important;
+  border: none !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  padding-left: 10px !important;
+}
+
+/* Día actual */
+.fc-day-today {
+  background-color: #eef7f6 !important;
+}
+
+/* Línea de hora actual */
+.fc-timegrid-now-indicator-line {
+  border-color: var(--color-primary) !important;
+}
+
+/* Toolbar y botones */
+.fc-button {
+  background-color: #f7f9fa !important;
+  border: none !important;
+  color: var(--color-accent) !important;
+  font-weight: 500 !important;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.fc-button:hover,
+.fc-button-active {
+  background-color: var(--color-primary) !important;
+  color: #ffffff !important;
+}
+
+/* Título del calendario */
+.fc-toolbar-title {
+  color: var(--color-accent) !important;
+  font-weight: 600 !important;
+}
+
+/* Iconos de navegación */
+.fc-icon {
+  color: var(--color-accent) !important;
+}
+
+/* Texto dentro de eventos */
+.fc-event-title,
+.fc-event-time {
+  color: #ffffff !important;
+}
