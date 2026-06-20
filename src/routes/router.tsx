@@ -5,23 +5,24 @@ import Register from '../pages/Register'
 import Calendar from '../pages/Calendar'
 import MainLayout from '../layouts/MainLayout'
 import ProtectedRoute from '../components/ProtectedRoute'
+import PublicRoute from '../components/PublicRoute'
 
 export default function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Login />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
+                <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
+                <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
                 <Route element={<MainLayout />}>
 
-                    <Route 
-                        path="/calendar" 
-                        element={ 
-                            <ProtectedRoute> 
-                                <Calendar /> 
+                    <Route
+                        path="/calendar"
+                        element={
+                            <ProtectedRoute>
+                                <Calendar />
                             </ProtectedRoute>
-                        } 
+                        }
                     />
                 </Route>
             </Routes>

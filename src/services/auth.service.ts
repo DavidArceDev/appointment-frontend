@@ -1,5 +1,5 @@
 const API_URL = `${import.meta.env.VITE_API_URL}/auth`
-export const register = async (data:any) => {
+export const register = async (data: unknown) => {
   const response = await fetch(
     `${API_URL}/register`,
     {
@@ -20,7 +20,7 @@ export const register = async (data:any) => {
   return result
 }
 
-export const login = async (data:any) => {
+export const login = async (data: unknown) => {
   const response = await fetch(
     `${API_URL}/login`,
     {

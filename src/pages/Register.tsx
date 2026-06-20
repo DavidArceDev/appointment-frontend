@@ -17,74 +17,74 @@ export default function Register() {
         phone: '',
     })
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({
-        ...form,
-        [e.target.name]: e.target.value,
+            ...form,
+            [e.target.name]: e.target.value,
         })
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
         // VALIDACIONES VACÍAS
         if (!form.name || !form.last_name || !form.email || !form.password || !form.rut) {
-        return Swal.fire({
-            icon: 'warning',
-            title: 'Completa todos los campos obligatorios',
-        })
+            return Swal.fire({
+                icon: 'warning',
+                title: 'Completa todos los campos obligatorios',
+            })
         }
 
         // VALIDAR RUT
         if (!validarRUT(form.rut)) {
-        return Swal.fire({
-            icon: 'error',
-            title: 'RUT inválido',
-        })
+            return Swal.fire({
+                icon: 'error',
+                title: 'RUT inválido',
+            })
         }
 
         try {
-        await register(form)
+            await register(form)
 
-        await Swal.fire({
-            icon: 'success',
-            title: 'Usuario creado',
-        })
-
-        navigate('/login')
-
-        } catch (error) {
-        const msg = error.message
-
-        // usuario ya existe
-        if (msg.includes('Email ya registrado')) {
-            Swal.fire({
-            icon: 'error',
-            title: 'Usuario ya existe',
-            text: 'Este correo ya está registrado',
-            showCancelButton: true,
-            confirmButtonText: 'Ir a login',
-            cancelButtonText: 'Cerrar',
-            }).then((res) => {
-            if (res.isConfirmed) navigate('/login')
+            await Swal.fire({
+                icon: 'success',
+                title: 'Usuario creado',
             })
 
-            return
-        }
+            navigate('/login')
 
-        Swal.fire({
-            icon: 'error',
-            title: msg,
-        })
+        } catch (error: unknown) {
+            const msg = (error as Error).message
+
+            // usuario ya existe
+            if (msg.includes('Email ya registrado')) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Usuario ya existe',
+                    text: 'Este correo ya está registrado',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ir a login',
+                    cancelButtonText: 'Cerrar',
+                }).then((res) => {
+                    if (res.isConfirmed) navigate('/login')
+                })
+
+                return
+            }
+
+            Swal.fire({
+                icon: 'error',
+                title: msg,
+            })
         }
     }
 
-    const validarRUT = (rut) => {
+    const validarRUT = (rut: string) => {
         if (!rut) return false
 
         const clean = rut.replace(/\./g, '').replace('-', '')
         const body = clean.slice(0, -1)
-        let dv = clean.slice(-1).toUpperCase()
+        const dv = clean.slice(-1).toUpperCase()
 
         let sum = 0
         let multiplier = 2
@@ -96,17 +96,17 @@ export default function Register() {
 
         const expectedDV = 11 - (sum % 11)
 
-        let dvCalc =
+        const dvCalc =
             expectedDV === 11 ? '0'
-            : expectedDV === 10 ? 'K'
-            : expectedDV.toString()
+                : expectedDV === 10 ? 'K'
+                    : expectedDV.toString()
 
         return dvCalc === dv
     }
 
-    const formatRut = (value) => {
+    const formatRut = (value: string) => {
         // dejar solo numeros y k
-        let clean = value.replace(/[^0-9kK]/g, '').toUpperCase()
+        const clean = value.replace(/[^0-9kK]/g, '').toUpperCase()
 
         // separar cuerpo y dv
         if (clean.length <= 1) return clean
@@ -117,7 +117,7 @@ export default function Register() {
         return `${body}-${dv}`
     }
 
-    const sanitizeRut = (value) => {
+    const sanitizeRut = (value: string) => {
         return value
             .replace(/\./g, '')
             .replace(/[^0-9kK-]/g, '')
@@ -125,41 +125,41 @@ export default function Register() {
     }
 
     return (
-    <div className="auth-container">
-        <form className="auth-card" onSubmit={handleSubmit}>
-        <h2>Registro</h2>
+        <div className="auth-container">
+            <form className="auth-card" onSubmit={handleSubmit}>
+                <h2>Registro</h2>
 
-        <input name="name" placeholder="Nombre *" onChange={handleChange} />
-        <input name="last_name" placeholder="Apellido *" onChange={handleChange} />
-        <input name="email" placeholder="Email *" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Contraseña *" onChange={handleChange} />
+                <input name="name" placeholder="Nombre *" onChange={handleChange} />
+                <input name="last_name" placeholder="Apellido *" onChange={handleChange} />
+                <input name="email" placeholder="Email *" onChange={handleChange} />
+                <input type="password" name="password" placeholder="Contraseña *" onChange={handleChange} />
 
-        <input
-            name="rut"
-            placeholder="RUT (12345678-9)"
-            value={form.rut}
-            onChange={(e) => {
-            const cleaned = sanitizeRut(e.target.value)
+                <input
+                    name="rut"
+                    placeholder="RUT (12345678-9)"
+                    value={form.rut}
+                    onChange={(e) => {
+                        const cleaned = sanitizeRut(e.target.value)
 
-            setForm({
-                ...form,
-                rut: formatRut(cleaned),
-            })
-            }}
-            maxLength={10}
-            // placeholder="12345678-9 o 12345678-K"
-            autoComplete="off"
-            inputMode="text"
-        />
-        <input name="phone" placeholder="Teléfono (opcional)" onChange={handleChange} />
+                        setForm({
+                            ...form,
+                            rut: formatRut(cleaned),
+                        })
+                    }}
+                    maxLength={10}
+                    // placeholder="12345678-9 o 12345678-K"
+                    autoComplete="off"
+                    inputMode="text"
+                />
+                <input name="phone" placeholder="Teléfono (opcional)" onChange={handleChange} />
 
-        <button type="submit">Registrarse</button>
+                <button type="submit">Registrarse</button>
 
-        <div className="auth-link">
-            ¿Ya tienes cuenta? <Link to="/login">Login</Link>
+                <div className="auth-link">
+                    ¿Ya tienes cuenta? <Link to="/login">Login</Link>
+                </div>
+            </form>
         </div>
-        </form>
-    </div>
     )
 
 }

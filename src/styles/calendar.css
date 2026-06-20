@@ -219,9 +219,6 @@ a:hover {
 
 /* Evento confirmado (para uso interno o vista profesional) */
 .fc-event {
-  background-color: var(--color-primary) !important;
-  border: none !important;
-  color: #fff !important;
   border-radius: 6px !important;
   font-weight: 500 !important;
   padding-left: 10px !important;

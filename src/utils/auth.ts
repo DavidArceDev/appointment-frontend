@@ -3,15 +3,15 @@ export const getToken = () => {
 }
 
 export const getCurrentUser = () => {
-  const patient =
-    localStorage.getItem('patient')
+    const patient =
+        localStorage.getItem('patient')
 
-  return patient
-    ? JSON.parse(patient)
-    : null
+    return patient
+        ? JSON.parse(patient)
+        : null
 }
 
 export const logout = () => {
-  localStorage.removeItem('token')
-  localStorage.removeItem('patient')
+    localStorage.removeItem('token')
+    localStorage.removeItem('patient')
 }

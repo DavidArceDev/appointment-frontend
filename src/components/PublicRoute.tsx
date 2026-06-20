@@ -1,17 +1,16 @@
 import { Navigate } from 'react-router-dom'
 import { type ReactNode } from 'react'
 
-export default function ProtectedRoute({
+export default function PublicRoute({
     children,
 }: {
     children: ReactNode
 }) {
 
-    const token =
-        localStorage.getItem('token')
+    const token = localStorage.getItem('token')
 
-    if (!token) {
-        return <Navigate to="/" />
+    if (token) {
+        return <Navigate to="/calendar" />
     }
 
     return <>{children}</>
