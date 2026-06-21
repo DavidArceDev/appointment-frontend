@@ -1,7 +1,11 @@
 import AppointmentCalendar from '../components/AppointmentCalendar'
 import { CalendarDays } from "lucide-react"
+import { useParams } from 'react-router-dom'
 
 export default function Calendar() {
+
+    const { professionalId } = useParams()
+
     return (
         <div style={{ width: '1200px', margin: '0 auto' }}>
 
@@ -15,7 +19,9 @@ export default function Calendar() {
                 Horarios disponibles
             </h1>
 
-            <AppointmentCalendar />
+            <AppointmentCalendar
+                professionalId={Number(professionalId)}
+            />
 
         </div>
     )

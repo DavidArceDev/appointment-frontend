@@ -37,7 +37,7 @@ export default function Router() {
                     />
 
                     <Route
-                        path="/calendar"
+                        path="/calendar/:professionalId"
                         element={
                             <ProtectedRoute>
                                 <Calendar />

@@ -9,6 +9,10 @@ import '../styles/calendar.css'
 import { createAppointment } from '../services/api'
 import type { DateSelectArg, EventClickArg } from '@fullcalendar/core'
 
+type Props = {
+    professionalId: number
+}
+
 type CalendarEvent = {
     title: string
     start: string
@@ -23,15 +27,21 @@ type AvailabilitySlot = {
     end_time: string
 }
 
-export default function AppointmentCalendar() {
+export default function AppointmentCalendar({ professionalId }: Props) {
 
     useEffect(() => {
+        if (!professionalId) return
+
         loadAvailability()
-    }, [])
+    }, [professionalId])
 
     const [selectedRange, setSelectedRange] = useState<DateSelectArg | null>(null)
 
     const [availability, setAvailability] = useState<AvailabilitySlot[]>([])
+
+    const patient = JSON.parse(localStorage.getItem('patient') || '{}')
+
+    console.log('patient:', patient)
 
     const closeModal = () => setSelectedRange(null)
 
@@ -70,8 +80,8 @@ export default function AppointmentCalendar() {
         try {
 
             const appointment = await createAppointment({
-                professional_id: 1,
-                patient_id: 1,
+                professional_id: professionalId,
+                patient_id: patient.id,
                 start_time: range.startStr,
                 end_time: range.endStr,
                 notes: '',
@@ -117,7 +127,7 @@ export default function AppointmentCalendar() {
 
         try {
 
-            const availability = await getAvailability(1)
+            const availability = await getAvailability(professionalId)
 
             setAvailability(availability)
 
