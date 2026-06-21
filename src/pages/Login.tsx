@@ -42,46 +42,46 @@ export default function Login() {
                 title: `Bienvenido ${result.patient.name}`,
             })
 
-            navigate('/calendar')
+            navigate('/dashboard')
 
-        } catch (error:any) {
-        const msg = error.message
+        } catch (error: unknown) {
+            const msg = (error as Error).message
 
-        // usuario no existe
-        if (msg.includes('Credenciales inválidas')) {
+            // usuario no existe
+            if (msg.includes('Credenciales inválidas')) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Usuario no encontrado o contraseña incorrecta',
+                    showCancelButton: true,
+                    confirmButtonText: 'Registrarme',
+                    cancelButtonText: 'Cerrar',
+                }).then((res) => {
+                    if (res.isConfirmed) navigate('/register')
+                })
+
+                return
+            }
+
             Swal.fire({
-            icon: 'error',
-            title: 'Usuario no encontrado o contraseña incorrecta',
-            showCancelButton: true,
-            confirmButtonText: 'Registrarme',
-            cancelButtonText: 'Cerrar',
-            }).then((res) => {
-            if (res.isConfirmed) navigate('/register')
+                icon: 'error',
+                title: msg,
             })
-
-            return
-        }
-
-        Swal.fire({
-            icon: 'error',
-            title: msg,
-        })
         }
     }
 
     return (
         <div className="auth-container">
             <form className="auth-card" onSubmit={handleSubmit}>
-            <h2>Login</h2>
+                <h2>Login</h2>
 
-            <input name="email" placeholder="Email" onChange={handleChange} />
-            <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
+                <input name="email" placeholder="Email" onChange={handleChange} />
+                <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
 
-            <button type="submit">Ingresar</button>
+                <button type="submit">Ingresar</button>
 
-            <div className="auth-link">
-                ¿No tienes cuenta? <Link to="/register">Registro</Link>
-            </div>
+                <div className="auth-link">
+                    ¿No tienes cuenta? <Link to="/register">Registro</Link>
+                </div>
             </form>
         </div>
     )
