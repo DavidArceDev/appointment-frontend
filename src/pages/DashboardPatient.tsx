@@ -5,6 +5,7 @@ import {
     ClipboardList,
     UserRound
 } from 'lucide-react'
+import Swal from 'sweetalert2'
 
 export default function Dashboard() {
 
@@ -13,7 +14,7 @@ export default function Dashboard() {
     return (
         <div className="dashboard-container">
 
-            <h1>Portal del Paciente</h1>
+            <h1>¿Qué deseas hacer?</h1>
 
             <div className="dashboard-grid">
 
@@ -30,8 +31,13 @@ export default function Dashboard() {
 
                 <div
                     className="dashboard-card"
-                    onClick={() => navigate('/my-appointments')}
+                    // onClick={() => navigate('/my-appointments')}
+                    onClick={() => Swal.fire({
+                        title: 'Funcionalidad en desarrollo',
+                        text: 'Esta funcionalidad estará disponible próximamente.',
+                    })}
                 >
+                    <ClipboardList size={40} />
                     <h3>Mis Reservas</h3>
                     <p>
                         Revisa tus horas agendadas
@@ -40,8 +46,13 @@ export default function Dashboard() {
 
                 <div
                     className="dashboard-card"
-                    onClick={() => navigate('/profile')}
+                    // onClick={() => navigate('/profile')}
+                    onClick={() => Swal.fire({
+                        title: 'Funcionalidad en desarrollo',
+                        text: 'Esta funcionalidad estará disponible próximamente.',
+                    })}
                 >
+                    <UserRound size={40} />
                     <h3>Mis Datos</h3>
                     <p>
                         Actualiza tu información
@@ -50,6 +61,6 @@ export default function Dashboard() {
 
             </div>
 
-        </div>
+        </div >
     )
 }

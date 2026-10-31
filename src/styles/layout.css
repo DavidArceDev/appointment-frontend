@@ -7,8 +7,10 @@
 
     padding: 12px 24px;
 
-    background-color: #14b8a6;
-    color: white;
+    background-color: #eeddd3;
+    color: black;
+    border-radius: 5px;
+
 }
 
 .user-info {

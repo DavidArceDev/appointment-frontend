@@ -127,12 +127,12 @@ export default function Register() {
     return (
         <div className="auth-container">
             <form className="auth-card" onSubmit={handleSubmit}>
-                <h2>Registro</h2>
+                <h2>Crear cuenta</h2>
 
-                <input name="name" placeholder="Nombre *" onChange={handleChange} />
-                <input name="last_name" placeholder="Apellido *" onChange={handleChange} />
-                <input name="email" placeholder="Email *" onChange={handleChange} />
-                <input type="password" name="password" placeholder="Contraseña *" onChange={handleChange} />
+                <input name="name" placeholder="Nombre" onChange={handleChange} />
+                <input name="last_name" placeholder="Apellido" onChange={handleChange} />
+                <input name="email" placeholder="Correo electrónico" onChange={handleChange} />
+                <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
 
                 <input
                     name="rut"
@@ -153,10 +153,10 @@ export default function Register() {
                 />
                 <input name="phone" placeholder="Teléfono (opcional)" onChange={handleChange} />
 
-                <button type="submit">Registrarse</button>
+                <button type="submit">Ingresar</button>
 
                 <div className="auth-link">
-                    ¿Ya tienes cuenta? <Link to="/login">Login</Link>
+                    <Link to="/login">Inicia sesión aquí</Link>
                 </div>
             </form>
         </div>

@@ -16,35 +16,28 @@ export default function Router() {
                 <Route path="/" element={<PublicRoute><Login /></PublicRoute>} />
                 <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
                 <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
+
                 <Route element={<MainLayout />}>
 
-                    <Route
-                        path="/dashboard"
-                        element={
-                            <ProtectedRoute>
-                                <Dashboard />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/dashboard" element={
+                        <ProtectedRoute>
+                            <Dashboard />
+                        </ProtectedRoute>
+                    } />
 
-                    <Route
-                        path="/booking"
-                        element={
-                            <ProtectedRoute>
-                                <Booking />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/booking" element={
+                        <ProtectedRoute>
+                            <Booking />
+                        </ProtectedRoute>
+                    } />
 
-                    <Route
-                        path="/calendar/:professionalId"
-                        element={
-                            <ProtectedRoute>
-                                <Calendar />
-                            </ProtectedRoute>
-                        }
-                    />
+                    <Route path="/calendar/:professionalId" element={
+                        <ProtectedRoute>
+                            <Calendar />
+                        </ProtectedRoute>
+                    } />
                 </Route>
+
             </Routes>
         </BrowserRouter>
     )

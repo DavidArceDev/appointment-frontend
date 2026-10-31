@@ -1,0 +1,61 @@
+:root {
+    /* COLORES DE MARCA */
+    --color-primary: #87977F;
+    --color-primary-hover: #71836A;
+    --color-primary-light: #E3E9DF;
+
+    --color-accent: #A96F5D;
+    --color-accent-light: #F0DDD5;
+
+    /* SUPERFICIES */
+    --color-background: #F7F3ED;
+    --color-surface: #FFFFFF;
+    --color-surface-secondary: #E9DED1;
+
+    /* TEXTOS */
+    --color-text: #51483F;
+    --color-text-secondary: #82776C;
+    --color-text-muted: #A69B90;
+    --color-text-inverse: #FFFFFF;
+
+    /* ESTADOS */
+    --color-success: #718C70;
+    --color-warning: #C99B58;
+    --color-danger: #C77D76;
+    --color-info: #829EAA;
+
+    /* BORDES */
+    --color-border: #E7DED4;
+    --color-focus: #87977F;
+
+    /* TIPOGRAFÍAS */
+    --font-heading: 'Manrope', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+
+    /* TAMAÑOS DE TEXTO */
+    --font-xs: 0.75rem;
+    --font-sm: 0.875rem;
+    --font-md: 1rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.375rem;
+    --font-2xl: 1.75rem;
+    --font-3xl: 2.25rem;
+
+    /* ESPACIADOS */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+
+    /* BORDES REDONDEADOS */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-xl: 24px;
+
+    /* SOMBRAS */
+    --shadow-card: 0 4px 20px rgba(81, 72, 63, 0.06);
+    --shadow-hover: 0 8px 28px rgba(81, 72, 63, 0.10);
+}

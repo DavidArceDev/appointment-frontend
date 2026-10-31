@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { login } from '../services/auth.service'
 import '../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
+import backgroundImage from '../assets/background-appointment.png'
 
 export default function Login() {
 
@@ -54,7 +55,9 @@ export default function Login() {
                     title: 'Usuario no encontrado o contraseña incorrecta',
                     showCancelButton: true,
                     confirmButtonText: 'Registrarme',
-                    cancelButtonText: 'Cerrar',
+                    cancelButtonText: 'Volver a intentar',
+                    confirmButtonColor: '#A8B5A0',
+                    cancelButtonColor: '#C98F78',
                 }).then((res) => {
                     if (res.isConfirmed) navigate('/register')
                 })
@@ -70,17 +73,18 @@ export default function Login() {
     }
 
     return (
-        <div className="auth-container">
+        <div className="auth-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <form className="auth-card" onSubmit={handleSubmit}>
-                <h2>Login</h2>
+                <h2>Iniciar sesión</h2>
+                <p>Bienvenido de vuelta</p>
 
-                <input name="email" placeholder="Email" onChange={handleChange} />
+                <input name="email" placeholder="Correo electrónico" onChange={handleChange} />
                 <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
 
-                <button type="submit">Ingresar</button>
+                <button type="submit" style={{ backgroundColor: '#87977F', color: 'white' }}>Ingresar</button>
 
                 <div className="auth-link">
-                    ¿No tienes cuenta? <Link to="/register">Registro</Link>
+                    <Link to="/register">Crear cuenta</Link>
                 </div>
             </form>
         </div>

@@ -9,8 +9,9 @@ export default function PublicRoute({
 
     const token = localStorage.getItem('token')
 
+    // no está logeado redirige a dashboard paciente
     if (token) {
-        return <Navigate to="/calendar" />
+        return <Navigate to="/dashboard" />
     }
 
     return <>{children}</>
