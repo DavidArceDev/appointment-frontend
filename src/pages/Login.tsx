@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import { login } from '../services/auth.service'
 import '../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
-import backgroundImage from '../assets/background-appointment.png'
+import AuthLayout from '../components/AuthLayout'
 
 export default function Login() {
 
@@ -73,20 +73,36 @@ export default function Login() {
     }
 
     return (
-        <div className="auth-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+        <AuthLayout>
             <form className="auth-card" onSubmit={handleSubmit}>
                 <h2>Iniciar sesión</h2>
                 <p>Bienvenido de vuelta</p>
 
-                <input name="email" placeholder="Correo electrónico" onChange={handleChange} />
-                <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Correo electrónico"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                />
 
-                <button type="submit" style={{ backgroundColor: '#87977F', color: 'white' }}>Ingresar</button>
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    autoComplete="current-password"
+                    value={form.password}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit">Iniciar sesión</button>
 
                 <div className="auth-link">
-                    <Link to="/register">Crear cuenta</Link>
+                    ¿Aún no tienes cuenta? <Link to="/register">Crear cuenta</Link>
                 </div>
             </form>
-        </div>
+        </AuthLayout>
     )
 }
