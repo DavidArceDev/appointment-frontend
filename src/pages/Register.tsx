@@ -4,6 +4,15 @@ import { register } from '../services/auth.service'
 import '../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
 import AuthLayout from '../components/AuthLayout'
+import AuthInput from '../components/AuthInput'
+import {
+    UserRound,
+    Mail,
+    LockKeyhole,
+    IdCard,
+    Phone,
+    ShieldCheck
+} from 'lucide-react'
 
 export default function Register() {
 
@@ -131,29 +140,66 @@ export default function Register() {
                 <h1>Crear cuenta</h1>
                 <p>Ingresa tus datos para comenzar</p>
 
-                <input name="name" placeholder="Nombre" onChange={handleChange} />
-                <input name="last_name" placeholder="Apellido" onChange={handleChange} />
-                <input name="email" placeholder="Correo electrónico" onChange={handleChange} />
-                <input type="password" name="password" placeholder="Contraseña" onChange={handleChange} />
+                <AuthInput
+                    icon={UserRound}
+                    name="name"
+                    placeholder="Nombre"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                />
 
-                <input
+                <AuthInput
+                    icon={UserRound}
+                    name="last_name"
+                    placeholder="Apellidos"
+                    value={form.last_name}
+                    onChange={handleChange}
+                    required
+                />
+
+                <AuthInput
+                    icon={Mail}
+                    type="email"
+                    name="email"
+                    placeholder="Correo electrónico"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                />
+
+                <AuthInput
+                    icon={LockKeyhole}
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    value={form.password}
+                    onChange={handleChange}
+                    required
+                />
+
+                <AuthInput
+                    icon={IdCard}
                     name="rut"
                     placeholder="RUT (12345678-9)"
                     value={form.rut}
                     onChange={(e) => {
                         const cleaned = sanitizeRut(e.target.value)
-
-                        setForm({
-                            ...form,
-                            rut: formatRut(cleaned),
-                        })
+                        setForm({ ...form, rut: formatRut(cleaned) })
                     }}
                     maxLength={10}
-                    // placeholder="12345678-9 o 12345678-K"
                     autoComplete="off"
-                    inputMode="text"
+                    required
                 />
-                <input name="phone" placeholder="Teléfono (opcional)" onChange={handleChange} />
+
+                <AuthInput
+                    icon={Phone}
+                    type="tel"
+                    name="phone"
+                    placeholder="Teléfono (opcional)"
+                    value={form.phone}
+                    onChange={handleChange}
+                />
 
                 <button type="submit">Ingresar</button>
 
@@ -163,6 +209,11 @@ export default function Register() {
 
                 <div className="auth-secondary-link">
                     <Link to="/login">Iniciar sesión</Link>
+                </div>
+
+                <div className="auth-security">
+                    <ShieldCheck size={17} strokeWidth={1.8} />
+                    <span>Tus datos están protegidos y son confidenciales.</span>
                 </div>
             </form>
         </AuthLayout>

@@ -4,6 +4,8 @@ import { login } from '../services/auth.service'
 import '../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
 import AuthLayout from '../components/AuthLayout'
+import AuthInput from '../components/AuthInput'
+import { Mail, LockKeyhole, ShieldCheck } from 'lucide-react'
 
 export default function Login() {
 
@@ -78,7 +80,8 @@ export default function Login() {
                 <h1>Iniciar sesión</h1>
                 <p>Bienvenido de vuelta</p>
 
-                <input
+                <AuthInput
+                    icon={Mail}
                     type="email"
                     name="email"
                     placeholder="Correo electrónico"
@@ -88,7 +91,8 @@ export default function Login() {
                     required
                 />
 
-                <input
+                <AuthInput
+                    icon={LockKeyhole}
                     type="password"
                     name="password"
                     placeholder="Contraseña"
@@ -105,6 +109,11 @@ export default function Login() {
 
                 <div className="auth-secondary-link">
                     <Link to="/register">Registrarme</Link>
+                </div>
+
+                <div className="auth-security">
+                    <ShieldCheck size={17} strokeWidth={1.8} />
+                    <span>Tus datos están protegidos y son confidenciales.</span>
                 </div>
 
             </form>

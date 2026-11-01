@@ -123,30 +123,8 @@
     text-align: center;
 }
 
-
-.auth-card input {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    padding: 13px 14px;
-    margin-bottom: 14px;
-
-    color: var(--color-text);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    outline: none;
-
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
 .auth-card input::placeholder {
     color: var(--color-text-muted);
-}
-
-.auth-card input:focus {
-    border-color: var(--color-focus);
-    box-shadow: 0 0 0 3px rgba(135, 151, 127, 0.18);
 }
 
 .auth-card button {
@@ -232,6 +210,81 @@
     color: rgb(216, 198, 198);
     border-color: var(--color-accent);
     background: var(--color-accent-light);
+}
+
+/* INPUTS */
+.auth-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    padding: 0 14px;
+    margin-bottom: var(--spacing-md);
+
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    color: var(--color-text-muted);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-input:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(135, 151, 127, 0.18);
+}
+
+.auth-input input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    padding: 13px 0;
+    margin: 0;
+
+    color: var(--color-text);
+    background: transparent;
+    border: none;
+    outline: none;
+
+    font-family: var(--font-body);
+    font-size: var(--font-md);
+}
+
+.auth-input input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.auth-input svg {
+    flex-shrink: 0;
+    color: var(--color-text-muted);
+}
+
+.auth-input:focus-within svg {
+    color: var(--color-primary-hover);
+}
+
+/* SECURITY */
+.auth-security {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 24px;
+    padding-top: 16px;
+
+    color: var(--color-text-muted);
+    border-top: 1px solid var(--color-border);
+
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.auth-security svg {
+    flex-shrink: 0;
+    color: var(--color-primary-hover);
 }
 
 
