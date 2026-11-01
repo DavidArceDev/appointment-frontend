@@ -74,7 +74,7 @@ export default function Login() {
 
     return (
         <AuthLayout>
-            <form className="auth-card" onSubmit={handleSubmit}>
+            <form className="auth-card auth-login" onSubmit={handleSubmit}>
                 <h1>Iniciar sesión</h1>
                 <p>Bienvenido de vuelta</p>
 

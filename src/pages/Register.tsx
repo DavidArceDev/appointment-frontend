@@ -128,7 +128,7 @@ export default function Register() {
     return (
         <AuthLayout>
             <form className="auth-card" onSubmit={handleSubmit}>
-                <h2>Crear cuenta</h2>
+                <h1>Crear cuenta</h1>
                 <p>Ingresa tus datos para comenzar</p>
 
                 <input name="name" placeholder="Nombre" onChange={handleChange} />
