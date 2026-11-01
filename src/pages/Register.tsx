@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { register } from '../services/auth.service'
 import '../styles/auth.css'
 import { Link, useNavigate } from 'react-router-dom'
+import AuthLayout from '../components/AuthLayout'
 
 export default function Register() {
 
@@ -125,9 +126,10 @@ export default function Register() {
     }
 
     return (
-        <div className="auth-container">
+        <AuthLayout>
             <form className="auth-card" onSubmit={handleSubmit}>
                 <h2>Crear cuenta</h2>
+                <p>Ingresa tus datos para comenzar</p>
 
                 <input name="name" placeholder="Nombre" onChange={handleChange} />
                 <input name="last_name" placeholder="Apellido" onChange={handleChange} />
@@ -156,10 +158,14 @@ export default function Register() {
                 <button type="submit">Ingresar</button>
 
                 <div className="auth-link">
-                    <Link to="/login">Inicia sesión aquí</Link>
+                    ¿Ya tienes cuenta?
+                </div>
+
+                <div className="auth-secondary-link">
+                    <Link to="/login">Iniciar sesión</Link>
                 </div>
             </form>
-        </div>
+        </AuthLayout>
     )
 
 }

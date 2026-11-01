@@ -75,7 +75,7 @@ export default function Login() {
     return (
         <AuthLayout>
             <form className="auth-card" onSubmit={handleSubmit}>
-                <h2>Iniciar sesión</h2>
+                <h1>Iniciar sesión</h1>
                 <p>Bienvenido de vuelta</p>
 
                 <input
@@ -100,8 +100,13 @@ export default function Login() {
                 <button type="submit">Iniciar sesión</button>
 
                 <div className="auth-link">
-                    ¿Aún no tienes cuenta? <Link to="/register">Crear cuenta</Link>
+                    ¿No tienes cuenta?
                 </div>
+
+                <div className="auth-secondary-link">
+                    <Link to="/register">Registrarme</Link>
+                </div>
+
             </form>
         </AuthLayout>
     )
